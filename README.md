@@ -3,7 +3,7 @@
 
 Запуск:
 ```bash
-docker run -d -p 192.168.56.10:8081:8081 -p 192.168.56.10:8082:8082 --name nexus -e INSTALL4J_ADD_VM_PARAMS="-Xms512m -Xmx512m -XX:MaxDirectMemorySize=273m" sonatype/nexus3
+docker run -d -p 192.168.20.111:8081:8081 -p 192.168.20.111:8082:8082 --name nexus -e INSTALL4J_ADD_VM_PARAMS="-Xms512m -Xmx512m -XX:MaxDirectMemorySize=273m" sonatype/nexus3
 ```
 
 Вывести пароль администратора для первого логина в Nexus:
@@ -29,8 +29,8 @@ echo 'export PATH=$PATH:/usr/local/go/bin' >> /etc/profile
 ## Freestyle job 
 
 1. `/usr/local/go/bin/go test .`
-2. `docker build . -t ubuntu-bionic:8082/hello-world:v$BUILD_NUMBER`
-3. `docker login ubuntu-bionic:8082 -u admin -p admin && docker push ubuntu-bionic:8082/hello-world:v$BUILD_NUMBER && docker logout`
+2. `docker build . -t vm1:8082/hello-world:v$BUILD_NUMBER`
+3. `docker login vm1:8082 -u admin -p admin && docker push vm1:8082/hello-world:v$BUILD_NUMBER && docker logout`
 
 ## Pipeline
 
